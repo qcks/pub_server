@@ -1,3 +1,39 @@
+##本地发布模板说明
+
+```
+name: test_flutter_package
+description: A new Flutter package.
+version: 0.0.1
+homepage: https://xxxxxxx/
+publish_to: http://192.168.100.233:8080
+
+```
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+flutter packages pub publish --dry-run
+
+flutter packages pub publish --server=http://192.168.100.233:8080
+
+
+
+##使用
+```
+environment: 
+  sdk: >=2.15.0 < 3.0.0
+
+dependencies:
+  transmogrify:
+    hosted: http://192.168.100.233:8080
+    version: ^1.4.0
+
+```
+
+
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+  flutter: ">=1.17.0"
+
 # ARCHIVED
 
 This repo has been archived, and is no longer maintained.
