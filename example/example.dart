@@ -17,12 +17,22 @@ import 'src/examples/http_proxy_repository.dart';
 
 final Uri pubDartLangOrg = Uri.parse('https://pub.dartlang.org');
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
+  /// 内网ip
+  String intranetIp;
+  for (var interface in await NetworkInterface.list()) {
+    for (var addr in interface.addresses) {
+      intranetIp = addr.address;
+      print('内网ip =$intranetIp');
+      break;
+    }
+  }
+
   var parser = argsParser();
   var results = parser.parse(args);
 
   var directory = results['directory'] as String;
-  var host = results['host'] as String;
+  var host = intranetIp??results['host'] as String;
   var port = int.parse(results['port'] as String);
   var standalone = results['standalone'] as bool;
 
@@ -50,7 +60,7 @@ Future<HttpServer> runPubServer(
       'To make the pub client use this repository configure your shell via:\n'
       '\n'
       '    \$ export PUB_HOSTED_URL=http://$host:$port\n'
-      '\n');
+      '私有服务器启动成功\n');
 
   return shelf_io.serve(
       const Pipeline()
@@ -65,7 +75,7 @@ ArgParser argsParser() {
 
   parser.addOption('directory',
       abbr: 'd', defaultsTo: 'pub_server-repository-data');
-
+  // 192.168.11.233
   parser.addOption('host', abbr: 'h', defaultsTo: 'localhost');
 
   parser.addOption('port', abbr: 'p', defaultsTo: '8080');
