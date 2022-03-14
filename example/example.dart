@@ -78,7 +78,7 @@ ArgParser argsParser() {
   // 192.168.11.233
   parser.addOption('host', abbr: 'h', defaultsTo: 'localhost');
 
-  parser.addOption('port', abbr: 'p', defaultsTo: '8080');
+  parser.addOption('port', abbr: 'p', defaultsTo: '14396');
   parser.addFlag('standalone', abbr: 's', defaultsTo: false);
   return parser;
 }

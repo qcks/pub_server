@@ -5,15 +5,15 @@ name: test_flutter_package
 description: A new Flutter package.
 version: 0.0.1
 homepage: https://xxxxxxx/
-publish_to: http://192.168.100.233:8080
+publish_to: http://192.168.100.233:14396
 
 ```
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
+
 flutter packages pub publish --dry-run
 
-flutter packages pub publish --server=http://192.168.100.233:8080
-
+flutter packages pub publish --server=http://192.168.100.233:14396
 
 
 ##使用
@@ -23,7 +23,7 @@ environment:
 
 dependencies:
   transmogrify:
-    hosted: http://192.168.100.233:8080
+    hosted: http://192.168.100.233:14396
     version: ^1.4.0
 
 ```
@@ -68,11 +68,11 @@ It can be run as follows
 ~/pub_server $ pub get
 ...
 ~/pub_server $ dart example/example.dart -d /tmp/package-db
-Listening on http://localhost:8080
+Listening on http://localhost:14396
 
 To make the pub client use this repository configure your shell via:
 
-    $ export PUB_HOSTED_URL=http://localhost:8080
+    $ export PUB_HOSTED_URL=http://localhost:14396
 ```
 
 Using it for uploading new packages to the locally running server or downloading
@@ -80,11 +80,11 @@ packages locally available or via a fallback to `pub.dartlang.org` is as easy
 as:
 
 ```
-~/foobar $ export PUB_HOSTED_URL=http://localhost:8080
+~/foobar $ export PUB_HOSTED_URL=http://localhost:14396
 ~/foobar $ pub get
 ...
 ~/foobar $ pub publish
-Publishing x 0.1.0 to http://localhost:8080:
+Publishing x 0.1.0 to http://localhost:14396:
 |-- ...
 '-- pubspec.yaml
 
